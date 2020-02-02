@@ -16,7 +16,21 @@ import os
 def alpaca_profile(args):
     # Sets text file with base_url, api_key_id, api_secret
     data = {}
-    if len(sys.argv) != 4:
+    if sys.argv[1] == '--info':
+        if path.exists('.alpaca_profile.txt'):
+            json_file = open('.alpaca_profile.txt', 'r')
+            data = json.load(json_file)
+            for key, value in data.items():
+                print(key, " is ", value)
+            if not 'base-url' in data:
+                print('Add base-url to alpaca_profile.')
+            if not 'api-key' in data:
+                print('Add api-key to alpaca_profile.')
+            if not 'secret_key' in data:
+                print('Add secret-key to alpaca_profile.')
+        else:
+            print('Add base-url, api-key, and secret-key.')
+    elif len(sys.argv) != 4:
         raise IOError('Must be entered: trading_bot -s type setting')
     if sys.argv[1] == '-s':
         if sys.argv[2] == 'base-url':
@@ -45,20 +59,6 @@ def alpaca_profile(args):
             f.close()    
         else:
             print('You can only set base-url, api-key, or secret-key')
-        if sys.argv[1] == '--info':
-            if path.exists('.alpaca_profile.txt'):
-                json_file = open('.alpaca_profile.txt', 'r')
-                data = json.load(json_file)
-                for key, value in data.items():
-                    print(key, " has value of ", value)
-                if not 'base-url' in data:
-                    print('Add base-url to alpaca_profile.')
-                if not 'api-key' in data:
-                    print('Add api-key to alpaca_profile.')
-                if not 'secret_key' in data:
-                    print('Add secret-key to alpaca_profile.')
-            else:
-                print('The secret key is not set yet.')
 
 
 # Helper function for creating array of chars from string
@@ -105,14 +105,7 @@ def run_bot(args):
                     verbose = True
                     j = i + 1
 
-    #for arg in sys.argv:
-    #    if not arg is str:
-    #        raise TypeError("cmd string string string : trading_bot <base_url> <api_key_id> <api_secret_key> ")
-
-    # Replace these with your API connection info from the dashboard
-    # base_url   = sys.argv[j]
-    # api_key_id = sys.argv[j+1]
-    # api_secret = sys.argv[j+2]
+    # Replace these with your API connection info from preset info
     f = open('.alpaca_profile.txt', 'r')
     data = json.load(f)
     base_url = data['base-url']
@@ -549,7 +542,8 @@ def run_bot(args):
 
 if __name__=='__main__':
     run = True
-    if sys.argv[1] == '-s':
+    flags = ['-s', '--info']
+    if sys.argv[1] in flags:
         alpaca_profile(sys.argv)
     else:
         if path.exists('.alpaca_profile.txt'):
