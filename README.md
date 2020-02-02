@@ -23,37 +23,37 @@ Andrea- I also learned a ton about cloud computing and secure shell for your tra
 ## What's next for cmd_my_stocks
 We want to develop it so it is easy for mathematicians/programmers to implement their own algorithms. So, we would probably separate a lot of the functions so a person can simply run a python script containing the algorithms straight on the cloud or his pc.
 
-NAME
+NAME  
 trading_bot - a simple command to connect with your Alpaca trading platform and automate running trading bots from your command line.
-
-SYNOPSIS
+  
+SYNOPSIS  
 trading_bot [--info]
-
-DESCRIPTION
+  
+DESCRIPTION  
 trading_bot is seemlessly designed to appeal to the tech-savvy and fiscally responsible individual.
-
-STARTUP OPTIONS
-	--info
-		Prints the current set base-url, api-key, and secret-key.
-	-s <key> <value>
-		Sets the key (base-url, api-key, or secret-key) to designated value.
-
-LOGGING AND INPUT FILE OPTIONS
-	-v 
-		Turn on verbose output, with all the available data. The default is not verbose.
-	-r <float>
-		Customize the risk of your portfolio when executing a command to run a trading bot.
-	-d <float>
-		Customize the stop limit of your trading bot when executing a command to run a trading bot.
-	-l <float>
-		Customize the minimum previous-day dollar volume for a stock we may consider.
-	-x <float>
-		Customize the maximum of the range of the price of stocks to purchase.
-	-n <float>
-		Customize the minimum of the range of the price of stocks to purchase.
-		
-SYNTAX
+  
+STARTUP OPTIONS  
+	--info  
+		Prints the current set base-url, api-key, and secret-key.  
+	-s <key> <value>  
+		Sets the key (base-url, api-key, or secret-key) to designated value.  
+  
+LOGGING AND INPUT FILE OPTIONS  
+	-v   
+		Turn on verbose output, with all the available data. The default is not verbose.  
+	-r <float>  
+		Customize the risk of your portfolio when executing a command to run a trading bot.  
+	-d <float>  
+		Customize the stop limit of your trading bot when executing a command to run a trading bot.  
+	-l <float>  
+		Customize the minimum previous-day dollar volume for a stock we may consider.  
+	-x <float>  
+		Customize the maximum of the range of the price of stocks to purchase.  
+	-n <float>  
+		Customize the minimum of the range of the price of stocks to purchase.  
+		  
+SYNTAX  
 	trading_bot-run
-		Runs 
-AUTHORS
-	trading_bot was written by and is maintained by Emily Costa and Andrea Vieira.
+		Runs the simple trading bot.  
+AUTHORS  
+	trading_bot was written by and is maintained by Emily Costa and Andrea Vieira.  
