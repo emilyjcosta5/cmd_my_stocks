@@ -26,7 +26,9 @@ fi
 if python -c "import ta" &> /dev/null; then
 	echo 'ta-lib already installed'
 else
-        pip3 install ta-lib
+        # curl -O https://downloads.sourceforge.net/project/ta-lib/ta-lib/0.4.0/ta-lib-0.4.0.jar?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fta-lib%2Ffiles%2Flatest%2Fdownload&ts=1580637169
+	# tar -xvf ta-lib-0.4.0-src.tar.gz
+	pip3 install ta-lib
 fi
 if python -c "import numpy" &> /dev/null; then
 	echo 'numpy already installed'
