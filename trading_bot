@@ -11,12 +11,15 @@ import sys
 from os import path
 import pandas as pd
 import json
+import os
 
 def alpaca_profile(args):
     # Sets text file with base_url, api_key_id, api_secret
     data = {}
-    if sys.argv[1] == 'base-url':
-        if sys.argv[2] == '-s':
+    if len(sys.argv) != 4:
+        raise IOError('Must be entered: trading_bot -s type setting')
+    if sys.argv[1] == '-s':
+        if sys.argv[2] == 'base-url':
             if path.exists('.alpaca_profile.txt'):
                 read = open('.alpaca_profile.txt', 'r')
                 data = json.load(read)
@@ -24,60 +27,39 @@ def alpaca_profile(args):
             f = open(".alpaca_profile.txt","w")
             f.write(json.dumps(data))
             f.close()
-        elif sys.argv[2] == '--info':
+        elif sys.argv[2] == 'api-key':
+            if path.exists('.alpaca_profile.txt'):
+                read = open('.alpaca_profile.txt', 'r')
+                data = json.load(read)
+            data['api-key'] = sys.argv[3]                
+            f = open(".alpaca_profile.txt","w")
+            f.write(json.dumps(data))
+            f.close()
+        elif sys.argv[2] == 'secret-key':
+            if path.exists('.alpaca_profile.txt'):
+                read = open('.alpaca_profile.txt', 'r')
+                data = json.load(read)
+            data['secret-key'] = sys.argv[3]
+            f = open(".alpaca_profile.txt","w")
+            f.write(json.dumps(data))
+            f.close()    
+        else:
+            print('You can only set base-url, api-key, or secret-key')
+        if sys.argv[1] == '--info':
             if path.exists('.alpaca_profile.txt'):
                 json_file = open('.alpaca_profile.txt', 'r')
                 data = json.load(json_file)
-                if 'base-url' in data:
-                    print('The base url is ', data['base-url'])
-                else:
-                    print('Base url is not set yet.')
+                for key, value in data.items():
+                    print(key, " has value of ", value)
+                if not 'base-url' in data:
+                    print('Add base-url to alpaca_profile.')
+                if not 'api-key' in data:
+                    print('Add api-key to alpaca_profile.')
+                if not 'secret_key' in data:
+                    print('Add secret-key to alpaca_profile.')
             else:
-                print('Base url is not set yet.')
-        else:
-            print('Please enter either -s, to set base-url, or --info, for info.')
-    if sys.argv[1] == 'api-key':
-            if sys.argv[2] == '-s':
-                if path.exists('.alpaca_profile.txt'):
-                    read = open('.alpaca_profile.txt', 'r')
-                    data = json.load(read)
-                data['api-key'] = sys.argv[3]
-                f = open(".alpaca_profile.txt","w")
-                f.write(json.dumps(data))
-                f.close()
-            elif sys.argv[2] == '--info':
-                if path.exists('.alpaca_profile.txt'):
-                    json_file = open('.alpaca_profile.txt', 'r')
-                    data = json.load(json_file)
-                    if 'api-key' in data:
-                        print('The api key is ', data['api-key'])
-                    else:
-                        print('The api key is not set yet.')
-                else:
-                    print('The api key is not set yet.')
-            else:
-                print('Please enter either -s, to set api-key, or --info, for info.')
-    if sys.argv[1] == 'secret-key':
-            if sys.argv[2] == '-s':
-                if path.exists('.allspaca_profile.txt'):
-                    read = open('.alpaca_profile.txt', 'r')
-                    data = json.load(read)
-                data['secret-key'] = sys.argv[3]
-                f = open(".alpaca_profile.txt","w")
-                f.write(json.dumps(data))
-                f.close()
-            elif sys.argv[2] == '--info':
-                if path.exists('.alpaca_profile.txt'):
-                    json_file = open('.alpaca_profile.txt', 'r')
-                    data = json.load(json_file)
-                    if 'secret-key' in data:
-                        print('The secret key is ', data['secret-key'])
-                    else:
-                        print('The secret key is not set yet.')
-                else:
-                    print('The secret key is not set yet.')
-            else:
-                print('Please enter either -s, to set secret-key, or --info, for info.')
+                print('The secret key is not set yet.')
+
 
 # Helper function for creating array of chars from string
 def split(word): 
@@ -128,9 +110,6 @@ def run_bot(args):
     #        raise TypeError("cmd string string string : trading_bot <base_url> <api_key_id> <api_secret_key> ")
 
     # Replace these with your API connection info from the dashboard
-    # base_url = 'https://paper-api.alpaca.markets'
-    # api_key_id = 'PK7K0AARV3N5UBEQIYJU'
-    # api_secret = 'OUcxKOqdhuZOHH0LdvtuTqkbQbEcXJONRBd71lM6'
     # base_url   = sys.argv[j]
     # api_key_id = sys.argv[j+1]
     # api_secret = sys.argv[j+2]
@@ -569,9 +548,8 @@ def run_bot(args):
         run(get_tickers(), market_open, market_close)
 
 if __name__=='__main__':
-    profile = ['base-url', 'api-key', 'secret-key']
     run = True
-    if sys.argv[1] in profile:
+    if sys.argv[1] == '-s':
         alpaca_profile(sys.argv)
     else:
         if path.exists('.alpaca_profile.txt'):
