@@ -1,60 +1,59 @@
 For TTB2020.
 
 ## Inspiration
-We love trading stocks, Linux, and algorithms. 
+We love stocks, Linux, and algorithms. We believe financial literacy can be fun, and it belongs on the terminal.
 
 ## What it does
-It always a user to run a trading bot using simple Linux commands. The user simply needs to hook it up to his Alpaca account, then run the bot with optional custom settings!
+*cmd_my_stocks* uses a trading bot to allow users to customize automated day trading decisions with Linux commands. Using transformative Alpaca API, users simply need to hook our bot to their Alpaca account and run our script to be on the road making great trade choices. Later, instead of leaving your computer running all day, you can watch how your algorithm has bought and sold stocks through the week by using Google Cloud VM- just another thing our script facilitates.
 
 ## How we built it
-We set up an Alpaca account, built a simple trading bot (inspired by some on the internet), built the Linux command, and connected it to Google Cloud for endless trading and financial growth.
+We set up an Alpaca account, built a simple trading bot (inspired by some on the Internet and more than a few Medium articles), developed a Linux command line interface, and connected our portfolios to Google Cloud for endless trading and financial growth.
 
 ## Challenges we ran into
-The biggest challenge would be making it easy for a user to connect it to Google Cloud. Now, the user can simply create a VM instance and input a few details, then the bot automatically will run on the remote machine.
+Integrating all of our ideas and findings was the greatest challenge, and facilitating a connection with Google Cloud while retaining all our other functions. We were happy to overcome our challenge with the remote machine after reading a rabbit-hole of Google Cloud docs and piecing some wins together. Now, our user can start by creating a VM instance, inputting a few details, and our bot will automatically run on the remote machine soon after.
 
 ## Accomplishments that we're proud of
-Emily- this was my first time building my own Linux command. Seeing several topics that excite me (cloud computing, Linux, python, finance, and math) combine for such a practical application feels like such an accomplishment.
-Andrea- making a command line tool that programmers will love using to create custom algorithms. 
+Emily - This was my first time building my own Linux command. Seeing several topics that excite me (cloud computing, Linux, python, finance, and math) combine for such a practical application feels like such an accomplishment.
+Andrea - Simplifying the many choices people have to make on a daily basis and increasing productivity is always something I'm very excited about. Trading individual stock can be extremely time consuming, as it requires time to study market behavior and being in the know with trends. We're passionate about doing the most that we can with our time, and the command line certainly has helped us do that. If we could encourage people to do tiny bits of research to greatly benefit the long run (i.e., learning about stock momentum and some simple math), 
 
 ## What we learned
-We learned about the extensions amount of tools (API, learning resources, data) available for online stock trading. We definitely see so much opportunity in the fields of finance and investment for our fellow computer nerds! 
-Andrea- I also learned a ton about cloud computing and secure shell for your trading needs (hooking up our algorithm to the cloud).
+Emily - We learned about the extensions amount of tools (API, learning resources, data) available for online stock trading. We definitely see so much opportunity in the fields of finance and investment for our fellow computer nerds! 
+Andrea - I also learned a great deal about cloud computing and secure shell for secure trading, I had previously had much more experience with mobile development (Android) and less experience with Linux programming, but coding with one of my best friends changed that for me!
 
 ## What's next for cmd_my_stocks
-We want to develop it so it is easy for mathematicians/programmers to implement their own algorithms. So, we would probably separate a lot of the functions so a person can simply run a python script containing the algorithms straight on the cloud or his pc.
+We want to develop it so it is easy for mathematicians/programmers to implement their own algorithms. So, we would probably separate a lot of the functions so a person can simply run a python script containing the algorithms straight on the cloud or their PC.
 
-NAME  
-trading_bot - a simple command to connect with your Alpaca trading platform and automate running trading bots from your command line.
-  
-SYNOPSIS  
-trading_bot [--info]
-  
-DESCRIPTION  
+**NAME**
+`trading_bot` - a simple command to connect with your Alpaca trading platform and automate running trading bots from your command line.
+
+**SYNOPSIS**
+`trading_bot [--info]`
+
+**DESCRIPTION**
 trading_bot is seemlessly designed to appeal to the tech-savvy and fiscally responsible individual.
-  
-STARTUP OPTIONS  
-	--info  
-		Prints the current set base-url, api-key, and secret-key.  
-	-s <key> <value>  
-		Sets the key (base-url, api-key, or secret-key) to designated value.  
-  
-LOGGING AND INPUT FILE OPTIONS  
-	-v   
-		Turn on verbose output, with all the available data. The default is not verbose.  
-	-r <float>  
-		Customize the risk of your portfolio when executing a command to run a trading bot.  
-	-d <float>  
-		Customize the stop limit of your trading bot when executing a command to run a trading bot.  
-	-l <float>  
-		Customize the minimum previous-day dollar volume for a stock we may consider.  
-	-x <float>  
-		Customize the maximum of the range of the price of stocks to purchase.  
-	-n <float>  
-		Customize the minimum of the range of the price of stocks to purchase.  
-		  
-SYNTAX  
-	trading_bot-run
-		Runs the simple trading bot.  
-  
-AUTHORS  
-	trading_bot was written by and is maintained by Emily Costa and Andrea Vieira.  
+
+**STARTUP OPTIONS**
+`--info`
+Prints the current set base-url, api-key, and secret-key.
+`-s`
+Sets the key (base-url, api-key, or secret-key) to designated value.
+
+**LOGGING AND INPUT FILE OPTIONS**
+`-v`
+Turn on verbose output, with all the available data. The default is not verbose.
+`-r`
+Customize the risk of your portfolio when executing a command to run a trading bot.
+`-d`
+Customize the stop limit of your trading bot when executing a command to run a trading bot.
+`-l`
+Customize the minimum previous-day dollar volume for a stock we may consider.
+`-x`
+Customize the maximum of the range of the price of stocks to purchase.
+`-n`
+Customize the minimum of the range of the price of stocks to purchase.
+
+**SYNTAX**
+`trading_bot-run` Runs the simple trading bot.
+
+**AUTHORS**
+trading_bot was written by and is maintained by Emily Costa and Andrea Vieira.
