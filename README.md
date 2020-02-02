@@ -55,5 +55,6 @@ LOGGING AND INPUT FILE OPTIONS
 SYNTAX  
 	trading_bot-run
 		Runs the simple trading bot.  
+  
 AUTHORS  
 	trading_bot was written by and is maintained by Emily Costa and Andrea Vieira.  
